@@ -16,19 +16,20 @@ def insert(sql):
 
     if matched:
         insert_data = matched.groupdict()
-        print('user data', insert_data)
         if insert_data['age'].isdigit():
             if validate_phone(insert_data['phone']):
                 insert_data['enroll_date'] = str(date.today())
                 insert_data['staff_id'] = staff_id()
-                print(insert_data)
-                append_staff(**insert_data)
+
+                datas = db_datas()
+                datas.append(insert_data)
+
+                create(datas)
+
             else:
                 print('Phone is not valid')
         else:
             print('Age is illegal')
-
-
     else:
         print(settings.INSERT_INVALID_INPUT)
 
