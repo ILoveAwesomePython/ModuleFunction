@@ -35,6 +35,36 @@ def insert(sql):
 
 def select(sql):
     print(sql)
+    if 'where' in sql:
+        where_regex = r'select (.*) from persons where (.*)'
+        matched = re.search(where_regex, sql)
+        if matched:
+            column, where_datas = matched.groups(0)
+
+            column_to_validate = column.split(',')
+            column_to_validate += where_data_column(where_datas)
+
+            if validate_column(column_to_validate):
+                if where_filter(where_datas):
+                    # print(where_filter(where_datas))
+                    show_data(where_filter(where_datas), column)
+                else:
+                    print('Nothing matched')
+            else:
+                print('Your select filed is not valid')
+
+        else:
+            print(settings.SELECT_INVALID_INPUT)
+
+    else:
+        regex = r'select (.*) from'
+        matched = re.search(regex, sql)
+        if matched:
+            column = matched.groups(0)
+        else:
+            print(settings.SELECT_INVALID_INPUT)
+
+
 
 def update(sql):
     pass
