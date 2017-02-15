@@ -17,7 +17,7 @@ SELECT_INVALID_INPUT ='''
 Check insert-values should have 4;
 SQL format should be like:  SELECT * FROM Persons
                           or SELECT id, LastName,FirstName FROM Persons
-                          or SELECT * FROM Persons where age = 22, name like '%amapi'
+                          or SELECT age,name FROM Persons where age = 22, name like '%amapi'
                           (where syntax should has space)
 '''
 DB_COLUMN = json.load(open(STAFF_DB, "r"))[0].keys()

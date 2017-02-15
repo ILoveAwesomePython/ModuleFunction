@@ -60,18 +60,21 @@ def where_filter(where_datas):
             func = getattr(where_function, func, None)
             is_satisfy.append( func(str(db_data[column]), condition) )
 
-        print(is_satisfy)
-
         if all(is_satisfy):
             filtered_data.append(db_data)
 
     return filtered_data
 
 
+
 def show_data(datas, column):
     up = ' Search Info Count: %s ' % len(datas)
     print(up.center(55, '*'))
     if column == '*':
-        print('show all')
+        column = datas[0].keys()
     else:
-        print('show part')
+        column = column.split(',')
+    for data in datas:
+        print(('staff %s' % data['staff_id']).center(55,'='))
+        for item in column:
+            print('{column}:{value}'.format(column=item, value=data[item]) )

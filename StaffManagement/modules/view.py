@@ -34,7 +34,6 @@ def insert(sql):
         print(settings.INSERT_INVALID_INPUT)
 
 def select(sql):
-    print(sql)
     if 'where' in sql:
         where_regex = r'select (.*) from persons where (.*)'
         matched = re.search(where_regex, sql)
@@ -51,7 +50,7 @@ def select(sql):
                 else:
                     print('Nothing matched')
             else:
-                print('Your select filed is not valid')
+                print('Your select field is not valid, check no blank between fields')
 
         else:
             print(settings.SELECT_INVALID_INPUT)
@@ -60,7 +59,12 @@ def select(sql):
         regex = r'select (.*) from'
         matched = re.search(regex, sql)
         if matched:
-            column = matched.groups(0)
+            column = matched.groups(0)[0]
+            if validate_column(column.split(',')):
+                show_data(db_datas(), column)
+            else:
+                print('Your select field is not valid, check no blank between fields')
+
         else:
             print(settings.SELECT_INVALID_INPUT)
 
