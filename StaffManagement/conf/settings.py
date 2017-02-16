@@ -20,6 +20,16 @@ SQL format should be like:  SELECT * FROM Persons
                           or SELECT age,name FROM Persons where age = 22, name like '%amapi'
                           (where syntax should has space)
 '''
+
+UPDATE_INVALID_INPUT ='''
+Check insert-values should have 4;
+SQL format should be like:  update persons set name = 'hello',age = 22 where staff_id = 1
+                          or update persons set phone = '139',age = 22
+                          or update persons set phone = '139',name = '233' where age = 22, name like '%amapi'
+                          (where syntax should has space)
+'''
+
+
 DB_COLUMN = json.load(open(STAFF_DB, "r"))[0].keys()
 
 SYMBOL = {

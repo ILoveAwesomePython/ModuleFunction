@@ -1,3 +1,1 @@
-[{"age": 22, "phone": "0", "name": "hamapi", "staff_id": 1112, "enroll_date": "20170909", "dept": "IT"}, 
-	{"age": 22, "phone": "1", "name": "hamapi", "staff_id": 1111, "enroll_date": "20170909", "dept": "IT"}, 
-	{"staff_id": 1113, "age": "21", "dept": "it", "name": "hamapi", "phone": "139", "enroll_date": "2017-02-12"}]
+[{"phone": "139", "name": "233", "enroll_date": "20170909", "staff_id": 1112, "dept": "IT", "age": 22}, {"phone": "1", "name": "233", "enroll_date": "20170909", "staff_id": 1111, "dept": "IT", "age": 22}, {"phone": "133", "name": "hamapi", "enroll_date": "2017-02-12", "staff_id": 1113, "dept": "it", "age": "21"}]

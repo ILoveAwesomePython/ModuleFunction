@@ -25,15 +25,14 @@ def validate_column(column):
         column.remove('*')
     return column.issubset(db_column)
 
-def where_data_column(where_datas):
+def make_columns(datas):
     '''
     REeturn list of where column
     '''  
-    where_datas = where_datas.split(',')
-    columns = list(map(lambda where_data: where_data.strip().split(' ')[0],
-                where_datas))
+    datas = datas.split(',')
+    columns = list(map(lambda data: data.strip().split(' ')[0],
+                datas))
     return columns
-
 
 def staff_id():
     db_staffs = db_datas()
@@ -66,6 +65,24 @@ def where_filter(where_datas):
     return filtered_data
 
 
+def where_satisfied(where_datas, data):
+    where_datas = where_datas.split(',')
+    is_satisfy = []
+
+    for where_data in where_datas:
+        column, operation, condition= where_data.strip().split(' ')
+        func = settings.SYMBOL.get(operation, None)
+        if not func:
+            return None
+
+        func = getattr(where_function, func, None)
+        is_satisfy.append( func(str(data[column]), condition) )
+
+    if all(is_satisfy):
+        return True
+    else:
+        return False
+
 
 def show_data(datas, column):
     up = ' Search Info Count: %s ' % len(datas)
@@ -78,3 +95,4 @@ def show_data(datas, column):
         print(('staff %s' % data['staff_id']).center(55,'='))
         for item in column:
             print('{column}:{value}'.format(column=item, value=data[item]) )
+

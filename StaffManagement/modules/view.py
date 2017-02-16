@@ -41,12 +41,12 @@ def select(sql):
             column, where_datas = matched.groups(0)
 
             column_to_validate = column.split(',')
-            column_to_validate += where_data_column(where_datas)
+            column_to_validate += make_columns(where_datas)
 
             if validate_column(column_to_validate):
-                if where_filter(where_datas):
-                    # print(where_filter(where_datas))
-                    show_data(where_filter(where_datas), column)
+                filtered_datas = where_filter(where_datas)
+                if filtered_datas:
+                    show_data(filtered_datas, column)
                 else:
                     print('Nothing matched')
             else:
@@ -71,7 +71,41 @@ def select(sql):
 
 
 def update(sql):
-    pass
+    # TODO: need change the name, != dao update
+    regex = ''
+    column_to_validate = ''
+    where_datas = ''
+
+    if 'where' in sql:
+        regex = r'update persons set (.*) where (.*)'
+        matched = re.search(regex, sql)
+        if matched:
+            set_datas, where_datas = matched.groups()
+            column_to_validate = make_columns("%s,%s" % (set_datas, where_datas))
+        else:
+            print(settings.SELECT_INVALID_INPUT)
+    else:
+        regex = r'update persons set (.*)'
+        matched = re.search(regex, sql)
+        if matched:
+            set_datas = matched.groups()[0]
+            column_to_validate = make_columns(set_datas)
+        else:
+            print(settings.SELECT_INVALID_INPUT)
+
+    
+    if validate_column(column_to_validate):
+        if 'phone' in set_datas:
+            phone = re.search(r"phone = '([0-9]*)'", set_datas).groups(0)[0]
+            if validate_phone(phone):
+                db_update(set_datas, where_datas)
+            else:
+                print('Phone is not valid')
+        else:
+            db_update(set_datas, where_datas)
+    else:
+        print('Your select field is not valid, check no blank between fields')
+        
 
 def delete(sql):
     pass
