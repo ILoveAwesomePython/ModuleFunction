@@ -30,6 +30,11 @@ SQL format should be like:  update persons set name = 'hello',age = 22 where sta
                           (where syntax should has space)
 '''
 
+DELETE_INVALID_INPUT ='''
+Check delete-values should have 4;
+SQL format should be like:  delete from person where staff_id = '1114'
+                          (where syntax should has space)
+'''
 
 DB_COLUMN = json.load(open(STAFF_DB, "r"))[0].keys()
 

@@ -46,7 +46,14 @@ def db_update(set_datas, where_datas):
 def select():
 	pass
 
-
+def db_delete_staff(staff_id):
+    all_staff = json.load(open(settings.STAFF_DB, 'r'))
+    for tag, staff in enumerate(all_staff):
+        if staff['staff_id'] == staff_id:
+            del (all_staff[tag])
+            json.dump(all_staff, open(settings.STAFF_DB, 'w'))
+            return True
+    return False
 
 
 

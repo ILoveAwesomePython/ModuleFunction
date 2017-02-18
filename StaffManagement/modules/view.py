@@ -116,4 +116,12 @@ def update(sql):
 @login
 @is_admin
 def delete(sql):
-    pass
+    matched = re.search("delete from person where staff_id = \'([0-9]+)\'", sql)
+    if matched:
+        staff_id = matched.group(1)
+        if db_delete_staff(staff_id):
+            print("This staff has deleted")
+        else:
+            print("This staff doesn't exist")
+    else:
+        print(settings.DELETE_INVALID_INPUT)
