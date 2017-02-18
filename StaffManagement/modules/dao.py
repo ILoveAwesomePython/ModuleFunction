@@ -26,8 +26,6 @@ def set_values(set_datas, data):
 			data[column] = value
 
 def db_update(set_datas, where_datas):
-	print(set_datas)
-	print(where_datas)
 	set_datas = set_datas.split(',')
 
 	datas = db_datas()

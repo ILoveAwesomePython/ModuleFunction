@@ -10,9 +10,10 @@ from .dao import *
 from .auth import *
 
 @login
+@is_admin
 def insert(sql):
     # Extract create data
-    regex =r"values \('(?P<phone>\w+)','(?P<name>\w+)','(?P<password>\w+)','(?P<dept>\w+)','(?P<age>\w+)'\)"
+    regex =r"values \('(?P<phone>\w+)','(?P<name>\w+)','(?P<password>\w+)','(?P<dept>\w+)','(?P<age>\w+)'\),'(?P<admin>\w+)'"
     matched = re.search(regex, sql)
 
     if matched:
@@ -75,6 +76,7 @@ def select(sql):
 
 
 @login
+@is_admin
 def update(sql):
     # TODO: need change the name, != dao update
     regex = ''
@@ -112,5 +114,6 @@ def update(sql):
         print('Your select field is not valid, check no blank between fields')
         
 @login
+@is_admin
 def delete(sql):
     pass
