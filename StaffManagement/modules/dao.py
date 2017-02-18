@@ -20,6 +20,8 @@ def set_values(set_datas, data):
 		if column == 'phone':
 			if lib.validate_phone(value):
 				data[column] = value
+		elif column == 'password':
+			data[column] = lib.hashed(value)
 		else:
 			data[column] = value
 
