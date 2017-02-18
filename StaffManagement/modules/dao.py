@@ -5,6 +5,7 @@ import json
 from conf import settings
 from modules import lib
 
+
 def create(user_input):
 	try:
 		json.dump(user_input, open(settings.STAFF_DB,"w"))
@@ -45,5 +46,7 @@ def db_update(set_datas, where_datas):
 def select():
 	pass
 
-def db_datas():
-	return json.load(open(settings.STAFF_DB, "r"))
+
+
+
+

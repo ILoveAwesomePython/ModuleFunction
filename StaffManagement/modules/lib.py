@@ -7,7 +7,6 @@ import hashlib
 from operator import itemgetter
 
 from conf import settings
-from .dao import *
 from modules import where_function
 
 
@@ -103,5 +102,9 @@ def hashed(base_password):
     m = hashlib.md5(b'hello world')
     m.update(bytes(base_password, encoding='utf-8'))
     return m.hexdigest()
+
+
+def db_datas():
+	return json.load(open(settings.STAFF_DB, "r"))
 
 
