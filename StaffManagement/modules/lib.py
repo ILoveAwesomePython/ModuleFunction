@@ -3,6 +3,7 @@
 # Author: Amy Wu
 
 import json
+import hashlib
 from operator import itemgetter
 
 from conf import settings
@@ -96,3 +97,7 @@ def show_data(datas, column):
         for item in column:
             print('{column}:{value}'.format(column=item, value=data[item]) )
 
+def hashed(base_password):
+    m = hashlib.md5(b'hello world')
+    m.update(bytes(base_password, encoding='utf-8'))
+    return m.hexdigest()

@@ -9,7 +9,8 @@ STAFF_DB = os.path.join(BASE_DIR, 'db', 'StaffInf.json')
 
 INSERT_INVALID_INPUT ='''
 Check insert-values should have 4;
-SQL format should be like: INSERT INTO Persons values ('139','sb','IT','21')
+SQL format should be like: INSERT INTO Persons values ('135','hamapi','1','IT','21')
+values' order is: phone, name, password, department, age
 '''
 
 

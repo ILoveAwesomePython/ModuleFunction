@@ -13,8 +13,6 @@ def create(user_input):
 		print(e.value)
 
 def set_values(set_datas, data):
-	print('????', set_datas)
-	print('?????????', data)
 	for item in set_datas:
 		column, operation, value = item.split(' ')
 		value = value.strip("'") # there is quote
@@ -42,11 +40,6 @@ def db_update(set_datas, where_datas):
 			set_values(set_datas, data)
 			# Change db in real time: once update one write into db
 			json.dump(datas, open(settings.STAFF_DB,"w"))
-
-
-
-
-	
 
 
 def select():

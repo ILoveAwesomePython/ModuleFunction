@@ -1,1 +1,3 @@
-[{"phone": "139", "name": "233", "enroll_date": "20170909", "staff_id": 1112, "dept": "IT", "age": 22}, {"phone": "1", "name": "233", "enroll_date": "20170909", "staff_id": 1111, "dept": "IT", "age": 22}, {"phone": "133", "name": "hamapi", "enroll_date": "2017-02-12", "staff_id": 1113, "dept": "it", "age": "21"}]
+[{"dept": "it", "enroll_date": "2017-02-18", "staff_id": 1114, "phone": "1344554", "password": "118e57b1eecd61e54b502055d82aa57f", "age": "21", "name": "hamapi"}, 
+	{"dept": "it", "staff_id": 1115, "age": "21", "phone": "13444", "enroll_date": "2017-02-18", "password": "118e57b1eecd61e54b502055d82aa57f", "name": "hamapi"}, 
+	{"dept": "it", "enroll_date": "2017-02-18", "staff_id": 1116, "age": "21", "phone": "135", "password": "118e57b1eecd61e54b502055d82aa57f", "name": "hamapi"}]

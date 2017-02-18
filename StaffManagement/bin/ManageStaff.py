@@ -10,26 +10,26 @@ from modules import auth,\
                     view
 import re
 def run():
-    if auth.login():
-        print('Welcom')
+    # if auth.login():
+    print('Welcom')
 
-        sql = input("Input SQL: ").lower().strip()
-        # Extract SQL action
-        action = re.match(r'(\w*)\b', sql)
-        if action:
-            action = action.group(0)
-        else:
-            print('Invalid SQL')
-
-        # execute function according to SQL
-        func = getattr(view, action, None)
-        if func:
-            func(sql)
-        else:
-            print('Invalid SQL')
-
+    sql = input("Input SQL: ").lower().strip()
+    # Extract SQL action
+    action = re.match(r'(\w*)\b', sql)
+    if action:
+        action = action.group(0)
     else:
-        print('Login first!')
+        print('Invalid SQL')
+
+    # execute function according to SQL
+    func = getattr(view, action, None)
+    if func:
+        func(sql)
+    else:
+        print('Invalid SQL')
+
+# else:
+#     print('Login first!')
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
-#!/user/bin/env python
-# -*-coding:utf-8 -*-
-# Author: Amy Wu
 
-def login():
-    return True
+
+
+def login(fun):
+	def decorator(*args, **kwargs):
+		result = func()
+	return decorator

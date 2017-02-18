@@ -11,7 +11,7 @@ from .dao import *
 
 def insert(sql):
     # Extract create data
-    regex =r"values \('(?P<phone>\w+)','(?P<name>\w+)','(?P<dept>\w+)','(?P<age>\w+)'\)"
+    regex =r"values \('(?P<phone>\w+)','(?P<name>\w+)','(?P<password>\w+)','(?P<dept>\w+)','(?P<age>\w+)'\)"
     matched = re.search(regex, sql)
 
     if matched:
@@ -20,6 +20,9 @@ def insert(sql):
             if validate_phone(insert_data['phone']):
                 insert_data['enroll_date'] = str(date.today())
                 insert_data['staff_id'] = staff_id()
+
+
+                insert_data['password'] = hashed(insert_data['password'])
 
                 datas = db_datas()
                 datas.append(insert_data)
