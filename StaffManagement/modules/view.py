@@ -7,8 +7,9 @@ from datetime import date
 from conf import  settings
 from .lib import *
 from .dao import *
+from .auth import *
 
-
+@login
 def insert(sql):
     # Extract create data
     regex =r"values \('(?P<phone>\w+)','(?P<name>\w+)','(?P<password>\w+)','(?P<dept>\w+)','(?P<age>\w+)'\)"
@@ -36,6 +37,7 @@ def insert(sql):
     else:
         print(settings.INSERT_INVALID_INPUT)
 
+@login
 def select(sql):
     if 'where' in sql:
         where_regex = r'select (.*) from persons where (.*)'
@@ -72,7 +74,7 @@ def select(sql):
             print(settings.SELECT_INVALID_INPUT)
 
 
-
+@login
 def update(sql):
     # TODO: need change the name, != dao update
     regex = ''
@@ -109,6 +111,6 @@ def update(sql):
     else:
         print('Your select field is not valid, check no blank between fields')
         
-
+@login
 def delete(sql):
     pass

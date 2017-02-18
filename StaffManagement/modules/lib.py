@@ -41,7 +41,7 @@ def staff_id():
         key = itemgetter('staff_id'))
 
     max_staff_id = sorted_staffs[len(sorted_staffs)-1]['staff_id']
-    return max_staff_id + 1
+    return str(max_staff_id + 1)
 
 
 def where_filter(where_datas):
@@ -92,12 +92,16 @@ def show_data(datas, column):
         column = datas[0].keys()
     else:
         column = column.split(',')
+
     for data in datas:
         print(('staff %s' % data['staff_id']).center(55,'='))
         for item in column:
-            print('{column}:{value}'.format(column=item, value=data[item]) )
+            if item != 'password':# Do not show password!
+                print('{column}:{value}'.format(column=item, value=data[item]) )
 
 def hashed(base_password):
     m = hashlib.md5(b'hello world')
     m.update(bytes(base_password, encoding='utf-8'))
     return m.hexdigest()
+
+
