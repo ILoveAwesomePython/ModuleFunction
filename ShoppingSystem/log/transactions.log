@@ -1,0 +1,16 @@
+2017-02-26 17:07:45,977 - transaction - INFO - account:11010101 action:repay amount:100.0 interest:0.0
+2017-02-26 17:11:12,446 - transaction - INFO - account:11010101 action:repay amount:100.0 interest:0.0
+2017-02-26 17:12:42,565 - transaction - INFO - account:11010101 action:repay amount:100.0 interest:0.0
+2017-02-26 17:17:36,461 - transaction - INFO - account:11010101 action:withdraw amount:100.0 interest:5.0
+2017-02-26 17:18:32,075 - transaction - INFO - account:11010101 action:withdraw amount:100.0 interest:5.0
+2017-02-26 17:19:21,187 - transaction - INFO - account:11010101 action:withdraw amount:1000.0 interest:50.0
+2017-02-26 17:22:09,146 - transaction - INFO - account:11010101 action:withdraw amount:200.0 interest:10.0
+2017-02-26 17:23:00,008 - transaction - INFO - account:11010101 action:withdraw amount:1000.0 interest:50.0
+2017-02-26 17:49:52,730 - transaction - INFO - account:11010101 action:repay amount:100.0 interest:0.0
+2017-02-26 17:49:52,730 - transaction - INFO - account:11010101 action:repay amount:100.0 interest:0.0
+2017-02-26 17:54:49,854 - transaction - INFO - account:11010101 action:transfer_account1 amount:100.0 interest:5.0
+2017-02-26 17:54:49,854 - transaction - INFO - account:11010101 action:transfer_account2 amount:100.0 interest:0.0
+2017-02-26 18:08:56,358 - transaction - INFO - account:11010101 action:transfer_account1 amount:100.0 interest:5.0
+2017-02-26 18:08:56,368 - transaction - INFO - account:11010102 action:transfer_account2 amount:100.0 interest:0.0
+2017-02-26 18:09:38,813 - transaction - INFO - account:11010101 action:transfer_account1 amount:100.0 interest:5.0
+2017-02-26 18:09:38,823 - transaction - INFO - account:11010102 action:transfer_account2 amount:100.0 interest:0.0
