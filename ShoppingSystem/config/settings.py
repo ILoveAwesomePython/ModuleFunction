@@ -1,12 +1,31 @@
 import os
 import logging
-
+import datetime
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+today = str(datetime.date.today())
 
 DATABASE = {
     'engine': 'file_storage',  # support mysql,postgresql in the future
     'name': 'accounts',
     'path': "%s/db" % BASE_DIR
+}
+
+DATABASE_ADMIN = {
+    'engine': 'file_storage',  # support mysql,postgresql in the future
+    'name': 'admins',
+    'path': "%s/db" % BASE_DIR
+}
+
+DATABASE_MODLE = {
+    "id": None,
+    "password": None,
+    "expire_date": None,
+    "balance": 15000,
+    "enroll_date":today,
+    "credit": 15000,
+    "pay_day": 22,
+    "status": 0,
+    "is_managed": 0
 }
 
 TRANSACTION_TYPE = {

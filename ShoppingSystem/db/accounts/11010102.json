@@ -1,1 +1,1 @@
-{"balance": 307.0, "id": 11010102, "password": "abc", "enroll_date": "2016-01-02", "credit": 15000, "expire_date": "2021-01-01", "pay_day": 22, "status": 0}
+{"balance": 307.0, "id": 11010102, "password": "abc", "enroll_date": "2016-01-02", "credit": 15000, "expire_date": "2021-01-01", "pay_day": 22, "status": 0, "is_managed": 0}

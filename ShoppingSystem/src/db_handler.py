@@ -2,9 +2,10 @@
 from config import settings
 import os
 import json
+import re
 
 def file_db_handle(conn_params):
-    print('file db:',conn_params)
+   # print('file db:',conn_params)
     return  file_execute
 
 
@@ -25,7 +26,6 @@ def file_execute(sql,**kwargs):
 
         if column == 'account':
             account_file = '%s/%s.json'%(db_path,val)
-            print(account_file)
             if os.path.isfile(account_file):
                 with open(account_file,'r') as f:
                    account_data = json.load(f)
@@ -35,18 +35,31 @@ def file_execute(sql,**kwargs):
         else:
             print("The account is necessary")
 
-    if sql_list[0].startswith("update") and len(sql_list)>1:
+    elif sql_list[0].startswith("update") and len(sql_list)>=1:
         column, val = sql_list[1].strip().split("=")
         if column == 'account':
             account_file = '%s/%s.json'%(db_path,val)
-            print(account_file)
             if os.path.isfile(account_file):
                 with open(account_file, 'w') as f:
                     json.dump(kwargs['account_data'],f)
             else:
                 print("The user information doesn't exist")
         else:
-            print("The account is necessary")
+            print("Please enter a account")
+
+    elif sql_list[0].startswith("insert") and len(sql_list) == 1:
+       vals =  re.search("[(](.*)[)]",sql_list[0])
+       val = vals.group(1).split(',')
+       account_file = '%s/%s.json' % (db_path, val[0])
+       if os.path.isfile(account_file):
+           print("This account exist")
+       else:
+           settings.DATABASE_MODLE['id'] = val[0]
+           settings.DATABASE_MODLE['password'] = val[1]
+           settings.DATABASE_MODLE['expire_date'] = val[2]
+           with open(account_file,'w') as f:
+               json.dump(settings.DATABASE_MODLE,f)
+           print("The account create successfully")
 
     else:
         print("invalid sql")

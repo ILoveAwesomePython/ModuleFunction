@@ -24,6 +24,7 @@ def acc_login(user_data,log_obj):
         if auth:
             user_data['is_authenticated'] = True
             user_data['account_id'] = account
+            user_data['account_data'] = auth
             return auth
         else:
             retry_count += 1
@@ -39,5 +40,15 @@ def login_required(func):
         else:
             exit("User is not authenticated")
     return wrapper
+
+
+def admin_required(func):
+    def wrapper(*args,**kwargs):
+        if args[0].get('account_data').get('is_managed') == 1:
+            return func(args[0])
+        else:
+            exit("You don't have permission")
+    return wrapper
+
 
 
