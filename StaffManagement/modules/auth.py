@@ -49,7 +49,7 @@ def login(func):
 
 def is_admin(func):
 	def decorator(*args, **kwargs):
-		if USER['user']['admin'] == '1':
+		if USER['user']['admins'] == '1':
 			result = func(*args, **kwargs)
 			return result
 		else:

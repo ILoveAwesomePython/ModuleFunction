@@ -13,7 +13,7 @@ from .auth import *
 @is_admin
 def insert(sql):
     # Extract create data
-    regex =r"values \('(?P<phone>\w+)','(?P<name>\w+)','(?P<password>\w+)','(?P<dept>\w+)','(?P<age>\w+)'\),'(?P<admin>\w+)'"
+    regex =r"values \('(?P<phone>\w+)','(?P<name>\w+)','(?P<password>\w+)','(?P<dept>\w+)','(?P<age>\w+)'\),'(?P<admins>\w+)'"
     matched = re.search(regex, sql)
 
     if matched:
